@@ -1,3 +1,4 @@
+2
 <!DOCTYPE html>
 <html>
 
@@ -16,6 +17,9 @@
         </li>
         <li>
             <p id="four"></p>
+        </li>
+        <li>
+            <p id="five"></p>
         </li>
     </ol>
 
@@ -58,12 +62,41 @@
         console.log(10 / +"2,5");
         document.getElementById("three").innerHTML = three;
 
-        //задание 3
+        //задание 4
         let four = `Оба атрибута ассинхронно загружают скрипты.
         Разница между async и defer: атрибут defer сохраняет относительную последовательность скриптов (по порядку сверху-вниз),
         а async – нет (исполняет скрипт загрузившийся первым).
         Кроме того, defer всегда ждёт, пока весь HTML-документ будет готов, а async – нет.`
         document.getElementById("four").innerHTML = four;
+
+        //задание 5
+        /*
+        Задание выполнил без деления с остатком каждой цифры (увлекся)
+        */
+        let lucky_number = '';
+        while (lucky_number.length !== 6 && +lucky_number !== NaN) {
+            lucky_number = prompt('Укажите номер билетика: ');
+            if (lucky_number == "") alert("Пусто(");
+            if (isNaN(+lucky_number)) alert("Это не номер");
+            if (lucky_number.length !== 6) alert("Нужно ввести 6 цифр");
+        }
+
+        let lucky_array = lucky_number.split('');
+        let first_half = lucky_array.slice(0, 3);
+        let last_half = lucky_array.slice(3, 7);
+        function getSum(total, num) {
+            num = parseInt(num);
+            return +total + num;
+        }
+        if (first_half.reduce(getSum) === last_half.reduce(getSum)) {
+            result = 'Ваш билетик счастливый!'
+        }
+        else {
+            result = 'сегодня не повезло!'
+        }
+
+        document.getElementById("five").innerHTML = result
+
 
 
     </script>
